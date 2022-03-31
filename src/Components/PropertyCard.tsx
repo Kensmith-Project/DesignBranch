@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Duration, Property } from '../types/property';
@@ -10,6 +11,15 @@ export interface PropertyCardProps{
     property: Property;
 }
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) =>{
+
+    // Hooks
+    const navigation = useNavigation<any>();
+
+    // Handlers
+    const handlePress = ()=>{
+        // TODO
+        navigation.navigate('')
+    }
 
     // Elements
     const statusAndPrice = (

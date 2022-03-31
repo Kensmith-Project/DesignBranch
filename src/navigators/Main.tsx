@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropertyCard from '../Components/PropertyCard';
 import propertyData from '../mockData/propertyData';
 import HomeScreen from '../screens/HomeScreen';
+import BottomTabNavigator from './BottomTabNavigator';
 
 
 const Drawer = createDrawerNavigator();
@@ -18,9 +19,7 @@ const MainNavigator: React.FC<any> = () =>{
 
     return(
         <NavigationContainer>
-            <TestStack.Navigator>
-                <TestStack.Screen name='Home' component={HomeScreen}/>
-            </TestStack.Navigator>
+            <BottomTabNavigator/>
         </NavigationContainer>
     )
 }
