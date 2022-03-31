@@ -1,3 +1,5 @@
+import { BasePickerItem } from "../Components/elements/BasePicker";
+
 export function formatAmount(amount: string): string {
     
     let fortmattedString: string = `${amount}`;
@@ -43,3 +45,14 @@ export function getInitials(fullname: string): string{
     let lastInitial = firstLetters.slice(-1)[0]
     return firstInitial + lastInitial
 };
+
+export function toPickerItem(arr: any[]): BasePickerItem[] {
+    let result: BasePickerItem[] = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        result.push({ label: element, value: element }); 
+    }
+
+    return result;
+}

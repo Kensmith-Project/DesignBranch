@@ -64,7 +64,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) =>{
     )
 
     return(
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.container} activeOpacity={0.9} >
             {/** Image Background */}
             <View style={styles.imageContainer}>
                 <Image source={propertyImage} style={styles.image}/>
@@ -81,32 +81,41 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) =>{
 const styles = StyleSheet.create({
 
     container:{
-        position: 'relative'
+        position: 'relative',
+        //backgroundColor: 'red',
+        borderRadius: 8,
     },
 
     imageContainer:{
         height: 180,
         width: '100%',
-        padding: 0
+        padding: 0,
     },
 
     image:{
         height: '100%',
         width: '100%',
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        borderRadius: 8,
     },
 
     cardOuter:{
-        //backgroundColor: 'red',
+        //backgroundColor: 'yellow',
         padding: 5,
         position: 'relative',
-        top: '-20%'
+        top: '-25%',
+        marginBottom: '-15%'
     },
 
     card:{
-        elevation: 5,
+        elevation: 8,
         shadowColor: 'rgba(185, 185, 185, 0.2)',
-        shadowOffset: { width: 0, height: 1 },
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 1,
+        shadowRadius: 8,
+        borderWidth: 1,
+        borderColor: 'rgba(185, 185, 185, 0.2)',
+        borderStyle: 'solid',
         backgroundColor: 'white',
         padding: 10,
         borderRadius: 10

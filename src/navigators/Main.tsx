@@ -4,6 +4,7 @@ import {createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropertyCard from '../Components/PropertyCard';
 import propertyData from '../mockData/propertyData';
+import HomeScreen from '../screens/HomeScreen';
 
 
 const Drawer = createDrawerNavigator();
@@ -18,7 +19,7 @@ const MainNavigator: React.FC<any> = () =>{
     return(
         <NavigationContainer>
             <TestStack.Navigator>
-                <TestStack.Screen name='Home' component={TestScreen}/>
+                <TestStack.Screen name='Home' component={HomeScreen}/>
             </TestStack.Navigator>
         </NavigationContainer>
     )
