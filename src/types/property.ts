@@ -39,15 +39,24 @@ export enum ParkingLot{
     Yes, No
 }
 
-export type Amenity = 
-'Equipped Kitchen' | 'Gym' | 'Laundry' | 'Media Room' | 'Backyard' | 'Pool' |
-'Electricity' | 'Electricity' | 'Water Supply' | 'Air Conditioning' | 'Washing Machine' |
-'WIFI';
+export enum Amenity{
+    "EquippedKitchen" = "Equipped Kitchen",
+    Gym = "Gym",
+    Laundry = "Laundry",
+    "MediaRoom" = "Media Room",
+    Backyard = "Backyard",
+    Pool = "Pool",
+    "Electricity" = "24hr Electricity",
+    "WaterSupply" = "Water Supply",
+    "AirConditioning" = "Air Conditioning",
+    "WashingMachine" = "Washing Machine",
+    WIFI = "WIFI",
+}
 
 export interface AmenityWithCount{
     id?: number;
     propertiesId?: number;
-    amenity: Amenity | string;
+    amenity: Amenity;
     number: number;
 }
 

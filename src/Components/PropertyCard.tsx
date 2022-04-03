@@ -18,7 +18,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) =>{
     // Handlers
     const handlePress = ()=>{
         // TODO
-        navigation.navigate('')
+        navigation.navigate('Property', { property: property });
     }
 
     // Elements
@@ -74,7 +74,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) =>{
     )
 
     return(
-        <TouchableOpacity style={styles.container} activeOpacity={0.9} >
+        <TouchableOpacity style={styles.container} activeOpacity={0.9}
+            onPress={handlePress}
+        >
             {/** Image Background */}
             <View style={styles.imageContainer}>
                 <Image source={propertyImage} style={styles.image}/>

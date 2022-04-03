@@ -29,5 +29,4 @@ target 'homezone' do
   end
 
   # For rn vector icons
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 end

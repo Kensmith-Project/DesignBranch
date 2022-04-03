@@ -10,6 +10,7 @@ import BasePicker from '../Components/elements/BasePicker';
 import { toPickerItem } from '../utils/GeneralUtils';
 import AntDeisgnIcon from 'react-native-vector-icons/AntDesign';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
 
@@ -86,19 +87,21 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
 
     return(
         <View style={styles.container}>
-            <BasePicker
-                visible={open}
-                onClose={handleClose}
-                selectedValue={selectedLanguage}
-                items={toPickerItem(Object.values(Cities))}
-                onValueChange={handleValueChange}
-            />
-            { renderLabel() }
-           <FlatList
-                data={testProperties}
-                renderItem={renderItem}
-                keyExtractor={(item,index)=> index + 'w'}
-           />
+            <View style={styles.content}>
+                <BasePicker
+                    visible={open}
+                    onClose={handleClose}
+                    selectedValue={selectedLanguage}
+                    items={toPickerItem(Object.values(Cities))}
+                    onValueChange={handleValueChange}
+                />
+                { renderLabel() }
+                <FlatList
+                        data={testProperties}
+                        renderItem={renderItem}
+                        keyExtractor={(item,index)=> index + 'w'}
+                />
+            </View>
         </View>
     )
 }
@@ -106,8 +109,12 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#FCFCFC',
+        backgroundColor: 'white',
         paddingHorizontal: 10,
+    },
+
+    content:{
+        marginTop: getStatusBarHeight(true)
     },
 
     title:{

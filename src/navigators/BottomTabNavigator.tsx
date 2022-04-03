@@ -5,12 +5,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../screens/HomeScreen';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
+import HomeStackNavigator from './HomeStack';
 
 const BottomTabNavigator: React.FC<any> = () =>{
     const Tab = createBottomTabNavigator();
     return(
         <Tab.Navigator
+            initialRouteName='Home'
             screenOptions={({route})=>({
                 headerShown: false,
                 tabBarActiveTintColor: "#91EA91",
@@ -21,16 +23,23 @@ const BottomTabNavigator: React.FC<any> = () =>{
                     fontWeight: '500',
                     paddingBottom: Platform.OS === 'android' ? 4 : 0
                 },
+                tabBarStyle:{
+                   borderTopLeftRadius: 15,
+                   borderTopRightRadius: 15,
+                },
                 tabBarIcon: ({ focused, color, size })=>{
 
                     let SearchIcon = <FontAwesomeIcon name='search' size={size} color={color}/>;
                     let WalletIcon = <Ionicons name='wallet-outline' size={size} color={color}/>;
-                    let HomeIcon = <FontAwesomeIcon 
-                        name='home' 
-                        size={30}
-                        color="white"
-                        style={styles.homeIcon}
-                    />;
+                    let HomeIcon = (
+                        <View style={styles.homeIcon}>
+                            <FontAwesomeIcon 
+                                name='home' 
+                                size={30}
+                                color="white"
+                            />
+                        </View>
+                    )
                     let SaveIcon = <MaterialCommunityIcons name='piggy-bank-outline' size={size} color={color}/>
                     let MoreIcon = <FeatherIcon name='more-horizontal' size={size} color={color}/>
 
@@ -54,10 +63,10 @@ const BottomTabNavigator: React.FC<any> = () =>{
         >
             <Tab.Screen name="Search" component={HomeScreen}  />
             <Tab.Screen name="Wallet" component={HomeScreen}  />
-            <Tab.Screen name="Home" component={HomeScreen}
+            <Tab.Screen name="Home" component={HomeStackNavigator}
                 options={{
                     tabBarLabelStyle: {
-                        fontSize: 0
+                        fontSize: Platform.OS === 'android' ? 0 : 1
                     },
                 }}  
             />
@@ -71,11 +80,11 @@ const BottomTabNavigator: React.FC<any> = () =>{
 const styles = StyleSheet.create({
     homeIcon:{
         backgroundColor: '#91EA91',
-        padding: 10,
+        padding: 12,
         borderRadius: 50,
         textAlign: 'center',
         position: 'absolute',
-        //bottom: 0
+        top: Platform.OS === 'android' ? undefined : 0
     }
 })
 

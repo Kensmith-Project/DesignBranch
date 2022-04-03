@@ -1,4 +1,5 @@
 import { BasePickerItem } from "../Components/elements/BasePicker";
+import { Amenity } from "../types/property";
 
 export function formatAmount(amount: string): string {
     
@@ -55,4 +56,21 @@ export function toPickerItem(arr: any[]): BasePickerItem[] {
     }
 
     return result;
+}
+
+export function getAmenityIcon(amenity: Amenity) {
+    let iconHash = {
+        [Amenity.AirConditioning]: 'hvac',
+        [Amenity.Backyard]: 'grass',
+        [Amenity.Electricity]: 'lightning-bolt',
+        [Amenity.EquippedKitchen]: 'fridge',
+        [Amenity.Gym]: 'dumbbell',
+        [Amenity.Laundry]: 'washing-machine',
+        [Amenity.MediaRoom]: 'movie',
+        [Amenity.Pool]: 'pool',
+        [Amenity.WIFI]: 'wifi',
+        [Amenity.WashingMachine]: 'washing-machine',
+        [Amenity.WaterSupply]: 'water'
+    }
+    return iconHash[amenity];
 }
