@@ -10,7 +10,9 @@ import BasePicker from '../Components/elements/BasePicker';
 import { toPickerItem } from '../utils/GeneralUtils';
 import AntDeisgnIcon from 'react-native-vector-icons/AntDesign';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import FilterModal, { FilterOptions } from '../Components/modals/FilterModal';
 
 const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
 
@@ -18,6 +20,7 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
     const [selectedLanguage, setSelectedLanguage] = React.useState('Lagos');
     const [value, setValue] = React.useState('Lagos');
     const [open, setOpen] = React.useState<boolean>(false);
+    const [filterOpen, setFilterOpen] = React.useState<boolean>(false);
 
     let testProperties: Property[] = [
         propertyData, propertyData, propertyData, propertyData, propertyData, propertyData,
@@ -38,7 +41,6 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
 
     const handlePress = ()=>{
         setOpen(true);
-        console.log('Clicked')
     }
 
     const handleClose = ()=>{
@@ -50,34 +52,55 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
         setSelectedLanguage(itemValue as string);
     }
 
+    const handleFilterPress = ()=>{
+        setFilterOpen(true);
+    }
+    const handleFilterClose = ()=>{
+        setFilterOpen(false);
+    }
+    const handleFilterStateChange = (state: FilterOptions) =>{
+        console.log(state);
+    }
+
     const renderLabel = ()=>{
         return(
            <View>
-               {/** Location */}
-               <View style={styles.locationContainer}>
+               {/** Location, Search and Filter */}
+               <View style={styles.topContainer}>
 
-                   {/** Location Icon */}
-                   <EntypoIcon
-                        name='location-pin'
-                        size={28}
-                        color="#91EA91"
-                   />
+                   {/** Location */}
+                    <View style={styles.locationContainer}>
 
-                   {/** Location Texts */}
-                   <View>
-                        <Text style={{ fontSize: 12 }}>Location</Text>
-                        <View style={styles.location}>
-                            <Text style={styles.locationText}>{selectedLanguage}</Text>
-                            <TouchableOpacity activeOpacity={0.5} onPress={handlePress}>
-                                <AntDeisgnIcon 
-                                    name='caretdown'
-                                    size={14}
-                                    style={styles.arrow}
-                                />
-                            </TouchableOpacity>
+                        {/** Location Icon */}
+                        <EntypoIcon
+                            name='location-pin'
+                            size={28}
+                            color="#91EA91"
+                        />
+
+                        {/** Location Texts */}
+                        <View>
+                            <Text style={{ fontSize: 12 }}>Location</Text>
+                            <View style={styles.location}>
+                                <Text style={styles.locationText}>{selectedLanguage}</Text>
+                                <TouchableOpacity activeOpacity={0.5} onPress={handlePress}>
+                                    <AntDeisgnIcon 
+                                        name='caretdown'
+                                        size={14}
+                                        style={styles.arrow}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                   </View>
 
+                    </View>
+
+                    {/** Search and Filter */}
+                    <View style={styles.searchFilterContainer}> 
+                       <TouchableOpacity onPress={handleFilterPress}>
+                            <Ionicons name='filter-sharp' size={18}/>
+                       </TouchableOpacity>
+                    </View>
                </View>
 
                <Text style={styles.title}>Find homes near you</Text>
@@ -88,6 +111,11 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () =>{
     return(
         <View style={styles.container}>
             <View style={styles.content}>
+                <FilterModal
+                    visible={filterOpen}
+                    onClose={handleFilterClose}
+                    onStateChange={handleFilterStateChange}
+                />
                 <BasePicker
                     visible={open}
                     onClose={handleClose}
@@ -124,6 +152,12 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     },
 
+    topContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
+    },
+
     locationContainer:{
         marginVertical: 10,
         flexDirection: 'row',
@@ -139,6 +173,11 @@ const styles = StyleSheet.create({
     location:{
         flexDirection: 'row',
         alignItems: 'center'
+    },
+
+    searchFilterContainer:{
+        marginVertical: 10,
+        flexDirection: 'row',
     },
 
     arrow:{
