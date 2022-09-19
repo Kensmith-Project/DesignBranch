@@ -7,6 +7,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../screens/HomeScreen';
 import { Platform, StyleSheet, View } from 'react-native';
 import HomeStackNavigator from './HomeStack';
+import { LinearGradient } from 'react-native-svg';
 
 const BottomTabNavigator: React.FC<any> = () =>{
     const Tab = createBottomTabNavigator();
@@ -15,7 +16,7 @@ const BottomTabNavigator: React.FC<any> = () =>{
             initialRouteName='Home'
             screenOptions={({route})=>({
                 headerShown: false,
-                tabBarActiveTintColor: "#91EA91",
+                tabBarActiveTintColor: "#198619",
                 tabBarHideOnKeyboard: true,
                 //tabBarShowLabel: false,
                 tabBarLabelStyle:{
@@ -24,54 +25,37 @@ const BottomTabNavigator: React.FC<any> = () =>{
                     paddingBottom: Platform.OS === 'android' ? 4 : 0
                 },
                 tabBarStyle:{
-                   borderTopLeftRadius: 15,
-                   borderTopRightRadius: 15,
+                //    borderBottomLeftRadius: 15,
+                //    borderBottomRightRadius: 15,
+                   backgroundColor: '#F3FFF3'
                 },
                 tabBarIcon: ({ focused, color, size })=>{
 
-                    let SearchIcon = <FontAwesomeIcon name='search' size={size} color={color}/>;
-                    let WalletIcon = <Ionicons name='wallet-outline' size={size} color={color}/>;
-                    let HomeIcon = (
-                        <View style={styles.homeIcon}>
-                            <FontAwesomeIcon 
-                                name='home' 
-                                size={30}
-                                color="white"
-                            />
-                        </View>
-                    )
-                    let SaveIcon = <MaterialCommunityIcons name='piggy-bank-outline' size={size} color={color}/>
-                    let MoreIcon = <FeatherIcon name='more-horizontal' size={size} color={color}/>
+                    let HomeIcon = <FontAwesomeIcon name='home' size={size} color={color}/>;
+                    let PropertyIcon = <Ionicons name='business-outline' size={size} color={color}/>;
+                    
+                    let ContactIcon = <Ionicons name='call-outline' size={size} color={color}/>
+                    let MoreIcon = <Ionicons name='person-outline' size={size} color={color}/>
 
-                    if (route.name === 'Search') {
-                        return SearchIcon;
-                    }
-                    if (route.name === 'Wallet') {
-                        return WalletIcon;
-                    }
                     if (route.name === 'Home') {
                         return HomeIcon;
                     }
-                    if (route.name === 'SaveForRent') {
-                        return SaveIcon;
+                    if (route.name === 'Post a Property') {
+                        return PropertyIcon;
                     }
-                    if (route.name === 'More') {
+                    if (route.name === 'Contact') {
+                        return ContactIcon;
+                    }
+                    if (route.name === 'Login') {
                         return MoreIcon;
                     }
                 }
             })}
         >
-            <Tab.Screen name="Search" component={HomeScreen}  />
-            <Tab.Screen name="Wallet" component={HomeScreen}  />
-            <Tab.Screen name="Home" component={HomeStackNavigator}
-                options={{
-                    tabBarLabelStyle: {
-                        fontSize: Platform.OS === 'android' ? 0 : 1
-                    },
-                }}  
-            />
-            <Tab.Screen name="SaveForRent" component={HomeScreen}  />
-            <Tab.Screen name="More" component={HomeScreen}  />
+            <Tab.Screen name="Home" component={HomeStackNavigator}  />
+            <Tab.Screen name="Post a Property" component={HomeScreen}  />
+            <Tab.Screen name="Contact" component={HomeScreen}  />
+            <Tab.Screen name="Login" component={HomeScreen}  />
 
         </Tab.Navigator>
     )
@@ -79,7 +63,7 @@ const BottomTabNavigator: React.FC<any> = () =>{
 
 const styles = StyleSheet.create({
     homeIcon:{
-        backgroundColor: '#91EA91',
+        backgroundColor: '#198619',
         padding: 12,
         borderRadius: 50,
         textAlign: 'center',
