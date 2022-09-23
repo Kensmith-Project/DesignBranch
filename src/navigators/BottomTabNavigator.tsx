@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import { Platform, StyleSheet, View } from 'react-native';
 import HomeStackNavigator from './HomeStack';
 import { LinearGradient } from 'react-native-svg';
+import PropertyStackNavigator from './PropertyStack';
 
 const BottomTabNavigator: React.FC<any> = () =>{
     const Tab = createBottomTabNavigator();
@@ -53,7 +54,7 @@ const BottomTabNavigator: React.FC<any> = () =>{
             })}
         >
             <Tab.Screen name="Home" component={HomeStackNavigator}  />
-            <Tab.Screen name="Post a Property" component={HomeScreen}  />
+            <Tab.Screen name="Post a Property" component={PropertyStackNavigator}  />
             <Tab.Screen name="Contact" component={HomeScreen}  />
             <Tab.Screen name="Login" component={HomeScreen}  />
 
