@@ -1,3 +1,4 @@
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import * as React from 'react';
 import {
   StyleSheet,
@@ -13,19 +14,32 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GeneralStackScreenProps from '../props/GeneralStackScreenProps';
 import {COLOR} from '../utils/Tools';
 
-interface Props {
-    navigation: any
+export interface PropertyCategoryProps extends GeneralStackScreenProps {
+  route?: RouteProp<{
+    params:{
+
+    }
+  }>
 }
 
-const PropertyCategory: React.FC<GeneralStackScreenProps> = () => {
+const PropertyCategory: React.FC<PropertyCategoryProps> = (route, navigation) => {
+
+  function moveToHomeScreen() {
+   
+  }
+
   return (
     <View>
       <View style={styles.topContainer}>
-        <Ionicons
-          size={30}
-          name="arrow-back-outline"
-          color={COLOR.blackColor}
-        />
+        <Pressable 
+        // onPress={}
+        >
+          <Ionicons
+            size={30}
+            name="arrow-back-outline"
+            color={COLOR.blackColor}
+          />
+        </Pressable>
       </View>
       <View style={{paddingLeft: 20, paddingRight: 20, marginTop: 44}}>
         <Text
@@ -40,7 +54,7 @@ const PropertyCategory: React.FC<GeneralStackScreenProps> = () => {
           Please select a category to list your property
         </Text>
         <View>
-          <View style={{flexDirection: 'row', justifyContent: "space-between"}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Pressable onPress={() => Alert.alert('For Rent button pressed')}>
               <ImageBackground
                 source={require('../images/forrent.png')}
@@ -92,7 +106,7 @@ const PropertyCategory: React.FC<GeneralStackScreenProps> = () => {
                   <Text
                     style={{
                       fontSize: 22,
-                      fontWeight: "900",
+                      fontWeight: '900',
                       lineHeight: 23,
                       marginTop: 8,
                       color: COLOR.baseColorPrimary,
@@ -104,7 +118,8 @@ const PropertyCategory: React.FC<GeneralStackScreenProps> = () => {
             </Pressable>
           </View>
           <View style={{marginTop: 22}}>
-          <Pressable onPress={() => Alert.alert('Rent to own button pressed')}>
+            <Pressable
+              onPress={() => Alert.alert('Rent to own button pressed')}>
               <ImageBackground
                 source={require('../images/renttoown.png')}
                 style={{width: 160, height: 160}}>
@@ -124,7 +139,7 @@ const PropertyCategory: React.FC<GeneralStackScreenProps> = () => {
                   <Text
                     style={{
                       fontSize: 22,
-                      fontWeight: "900",
+                      fontWeight: '900',
                       lineHeight: 23,
                       marginTop: 8,
                       color: COLOR.baseColorPrimary,

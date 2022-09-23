@@ -15,6 +15,8 @@ import GeneralStackScreenProps from '../props/GeneralStackScreenProps';
 import {COLOR} from '../utils/Tools';
 
 const PropertyType: React.FC<GeneralStackScreenProps> = () => {
+
+  //state
   const [borderColorOne, setBorderColorOne] = React.useState<string>('#B9B9B9');
   const [borderColorTwo, setBorderColorTwo] = React.useState<string>('#B9B9B9');
   const [borderColorThree, setBorderColorThree] =
