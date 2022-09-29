@@ -9,11 +9,13 @@ import PropertyImageScreen from '../screens/PropertyImage';
 import PropertyLocationScreen from '../screens/PropertyLocation';
 import PropertyDetailScreen from '../screens/PropertyDetails';
 import PropertySelectLocation from '../screens/PropertySelectLocation';
+import LoginScreen from '../screens/LoginScreen';
+import HomeStackNavigator from './HomeStack';
 
 const PropertyStackNavigator: React.FC<any> = () =>{
     const PropertyStack = createNativeStackNavigator();
     return(
-        <PropertyStack.Navigator initialRouteName='ProSelectLocation'
+        <PropertyStack.Navigator initialRouteName='ProCategory'
             screenOptions={({ route })=>({
                 headerShown: false
             })}
@@ -25,6 +27,7 @@ const PropertyStackNavigator: React.FC<any> = () =>{
             <PropertyStack.Screen name="ProLocation" component={PropertyLocationScreen}/>
             <PropertyStack.Screen name="ProDetails" component={PropertyDetailScreen}/>
             <PropertyStack.Screen name="ProSelectLocation" component={PropertySelectLocation}/>
+            <PropertyStack.Screen name="HomeStack" component={HomeStackNavigator}/>
         </PropertyStack.Navigator>
     )
 }

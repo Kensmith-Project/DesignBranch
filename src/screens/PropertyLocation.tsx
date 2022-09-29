@@ -12,8 +12,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
 import SelectDropdown from 'react-native-select-dropdown';
 
-const PropertyLocationScreen = () => {
-  const countries = ['Lagos', 'Rivers', 'Oyo', 'Imo', 'Anambra'];
+const PropertyLocationScreen: React.FC<any> = ({route, navigation}) => {
+  const states = ['Lagos', 'Rivers', 'Oyo', 'Imo', 'Anambra'];
+  const countries = ['Nigeria', 'USA', 'Germany', 'Brazin', 'Japan'];
+
+  function moveToProImage() {
+    navigation?.navigate("ProImage")
+  }
+
+  function moveToProDetails() {
+    navigation?.navigate("ProDetails")
+  }
 
   function icon() {
     return (
@@ -27,7 +36,7 @@ const PropertyLocationScreen = () => {
       <View style={styles.topContainer}>
         <Pressable
           style={styles.icon}
-          // onPress={}
+          onPress={moveToProImage}
         >
           <Ionicons
             size={30}
@@ -35,7 +44,7 @@ const PropertyLocationScreen = () => {
             color={COLOR.blackColor}
           />
         </Pressable>
-        <Text style={styles.topText}>Property Description</Text>
+        <Text style={styles.topText}>Property Location</Text>
       </View>
       <Progress.Bar color={COLOR.baseTextColor} progress={0.6} width={null} />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,8 +72,8 @@ const PropertyLocationScreen = () => {
               <Text style={styles.text}>State</Text>
               <SelectDropdown
                 renderDropdownIcon={icon}
-                data={countries}
-                search={true}
+                data={states}
+                // search={true}
                 buttonStyle={{backgroundColor: "white", borderWidth: 1, borderRadius: 10, width: "100%", borderColor: '#B9B9B9', marginBottom: 20}}
                 onSelect={(selectedItem, index) => {
                   console.log(selectedItem, index);
@@ -86,7 +95,7 @@ const PropertyLocationScreen = () => {
               <SelectDropdown
                 renderDropdownIcon={icon}
                 data={countries}
-                search={true}
+                // search={true}
                 buttonStyle={{backgroundColor: "white", borderWidth: 1, borderRadius: 10, width: "100%", borderColor: '#B9B9B9', marginBottom: 40}}
                 onSelect={(selectedItem, index) => {
                   console.log(selectedItem, index);
@@ -104,7 +113,7 @@ const PropertyLocationScreen = () => {
               />
             </View>
 
-            <Pressable style={styles.btn}>
+            <Pressable onPress={moveToProDetails} style={styles.btn}>
               <Text style={styles.btnText}>Next Step</Text>
             </Pressable>
           </View>

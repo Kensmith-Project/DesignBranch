@@ -8,14 +8,16 @@ import {
   Pressable,
   Alert,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
+import {color} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GeneralStackScreenProps from '../props/GeneralStackScreenProps';
 import {COLOR} from '../utils/Tools';
 
-const PropertyType: React.FC<GeneralStackScreenProps> = () => {
-
+const PropertyType: React.FC<GeneralStackScreenProps> = ({
+  route,
+  navigation,
+}) => {
   //state
   const [borderColorOne, setBorderColorOne] = React.useState<string>('#B9B9B9');
   const [borderColorTwo, setBorderColorTwo] = React.useState<string>('#B9B9B9');
@@ -39,6 +41,14 @@ const PropertyType: React.FC<GeneralStackScreenProps> = () => {
     setBorderColorTwo('#B9B9B9');
     setBorderColorThree('#198619');
   }
+
+  function moveToProCategory() {
+    navigation?.navigate("ProCategory")
+  }
+
+  function moveToProDes() {
+    navigation?.navigate("ProDes")
+  }
   return (
     <View
       style={{
@@ -47,11 +57,13 @@ const PropertyType: React.FC<GeneralStackScreenProps> = () => {
         justifyContent: 'space-between',
       }}>
       <View style={styles.topContainer}>
-        <Ionicons
-          size={30}
-          name="arrow-back-outline"
-          color={COLOR.blackColor}
-        />
+        <Pressable onPress={moveToProCategory}>
+          <Ionicons
+            size={30}
+            name="arrow-back-outline"
+            color={COLOR.blackColor}
+          />
+        </Pressable>
 
         <View style={{marginTop: 44}}>
           <Text
@@ -150,6 +162,7 @@ const PropertyType: React.FC<GeneralStackScreenProps> = () => {
       </View>
       <View>
         <Pressable
+        onPress={moveToProDes}
           style={{
             marginRight: 20,
             marginLeft: 20,
@@ -158,9 +171,17 @@ const PropertyType: React.FC<GeneralStackScreenProps> = () => {
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 20,
-            marginBottom: 20
+            marginBottom: 20,
           }}>
-          <Text style={{color: COLOR.baseColorPrimary, fontFamily: "Kanit", fontSize: 26, fontWeight: "500", }}>Contuine</Text>
+          <Text
+            style={{
+              color: COLOR.baseColorPrimary,
+              fontFamily: 'Kanit',
+              fontSize: 26,
+              fontWeight: '500',
+            }}>
+            Contuine
+          </Text>
         </Pressable>
       </View>
     </View>

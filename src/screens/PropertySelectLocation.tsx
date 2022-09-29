@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Pressable,
   ScrollView,
@@ -13,8 +13,42 @@ import * as Progress from 'react-native-progress';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Checkbox} from 'react-native-paper';
 
-const PropertySelectLocation = () => {
+const PropertySelectLocation: React.FC<any> = ({route, navigation}) => {
   const countries = ['Lagos', 'Rivers', 'Oyo', 'Imo', 'Anambra'];
+  const [eKitchen, setEKitchen] = useState<any>('unchecked');
+  const [gym, setGym] = useState<any>('unchecked');
+  const [wMachine, setMachine] = useState<any>('unchecked')
+
+  //Function to activate eKitchen check box
+  function eKitchenPressed(){
+    if(eKitchen === "unchecked" ){
+      setEKitchen("checked");
+      // setGym("unchecked");
+    }else {
+      setEKitchen("unchecked");
+    }
+    
+  }
+
+  //Function to activate gym check box
+  function gymPressed(){
+    if(gym === "unchecked" ){
+      setGym("checked");
+    }else {
+      setGym("unchecked");
+    }
+    
+  }
+
+  //Function to activate wMachine check box
+  function wMachinePressed(){
+    if(wMachine === "unchecked" ){
+      setMachine("checked");
+    }else {
+      setMachine("unchecked");
+    }
+    
+  }
 
   function icon() {
     return (
@@ -46,20 +80,26 @@ const PropertySelectLocation = () => {
             Please select the amenities available in your property.
           </Text>
 
-          <View >
+          <View>
             <View style={styles.viewCon}>
               <Text style={styles.text}>Indoor Details</Text>
               <View style={styles.viewThird}>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable onPress={eKitchenPressed}>
+                    <Checkbox status={eKitchen} />
+                  </Pressable>
                   <Text>Equpped Kitchen</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                  <Pressable onPress={gymPressed}>
+                    <Checkbox status={gym} />
+                  </Pressable>
                   <Text>Gym</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable onPress={wMachinePressed}>
+                    <Checkbox status={wMachine} />
+                  </Pressable>
                   <Text>Wahing Machine</Text>
                 </View>
               </View>
@@ -69,43 +109,54 @@ const PropertySelectLocation = () => {
               <Text style={styles.text}>Outdoor Details</Text>
               <View style={styles.viewThird}>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Checkbox status={status} /> */}
+                  </Pressable>
                   <Text>Pool</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Checkbox status={status} /> */}
+                  </Pressable>
                   <Text>Backyard</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Checkbox status={status} /> */}
+                  </Pressable>
                   <Text>Children’s Playground</Text>
                 </View>
               </View>
             </View>
-            
+
             <View style={styles.viewCon}>
               <Text style={styles.text}>Utilities</Text>
               <View style={styles.viewThird}>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Checkbox status={status} /> */}
+                  </Pressable>
                   <Text>24hr Electricity</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Checkbox status={status} /> */}
+                  </Pressable>
                   <Text>Air Conditioner</Text>
                 </View>
                 <View style={styles.viewThirdInside}>
-                  <Checkbox status="unchecked" />
+                <Pressable >
+                    {/* <Chec kbox status={status} /> */}
+                  </Pressable>
                   <Text>Water</Text>
                 </View>
               </View>
             </View>
             <View>
-                <Text style={styles.bottomText}>Input Additional Amenities not Listed (optional)</Text>
-                <TextInput
-                style={styles.desTextInput}
-                placeholder=""
-              />
+              <Text style={styles.bottomText}>
+                Input Additional Amenities not Listed (optional)
+              </Text>
+              <TextInput style={styles.desTextInput} placeholder="" />
             </View>
 
             <Pressable style={styles.btn}>
@@ -190,21 +241,21 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   viewThird: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   viewThirdInside: {
-    flexDirection: "row",
-    alignItems: 'center'
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   viewCon: {
-    paddingBottom: 40
+    paddingBottom: 40,
   },
-  bottomText:{
-    fontWeight: "600",
+  bottomText: {
+    fontWeight: '600',
     fontSize: 20,
-    marginBottom: 15
-  }
+    marginBottom: 15,
+  },
 });
 
 export default PropertySelectLocation;

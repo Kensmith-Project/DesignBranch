@@ -11,13 +11,21 @@ import {COLOR} from '../utils/Tools';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
 
-const PropertyDescriptionScreen = () => {
+const PropertyDescriptionScreen: React.FC<any> = ({route, navigation}) => {
+
+  function moveToProType() {
+    navigation?.navigate("ProType")
+  }
+
+  function moveToProImage() {
+    navigation?.navigate("ProImage")
+  }
   return (
     <View style={styles.mainContainer}>
       <View style={styles.topContainer}>
         <Pressable
           style={styles.icon}
-          // onPress={}
+          onPress={moveToProType}
         >
           <Ionicons
             size={30}
@@ -67,7 +75,7 @@ const PropertyDescriptionScreen = () => {
               />
             </View>
 
-            <Pressable style={styles.btn}>
+            <Pressable onPress={moveToProImage} style={styles.btn}>
               <Text style={styles.btnText}>Next Step</Text>
             </Pressable>
           </View>

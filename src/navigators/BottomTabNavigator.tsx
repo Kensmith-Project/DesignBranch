@@ -5,12 +5,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../screens/HomeScreen';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, View, Alert } from 'react-native';
 import HomeStackNavigator from './HomeStack';
 import { LinearGradient } from 'react-native-svg';
 import PropertyStackNavigator from './PropertyStack';
+import LoginStackNavigator from './LoginStack';
 
-const BottomTabNavigator: React.FC<any> = () =>{
+const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
     const Tab = createBottomTabNavigator();
     return(
         <Tab.Navigator
@@ -36,7 +37,14 @@ const BottomTabNavigator: React.FC<any> = () =>{
                     let PropertyIcon = <Ionicons name='business-outline' size={size} color={color}/>;
                     
                     let ContactIcon = <Ionicons name='call-outline' size={size} color={color}/>
-                    let MoreIcon = <Ionicons name='person-outline' size={size} color={color}/>
+                    // let LoginIcon = <Ionicons name='person-outline' size={size} color={color}/>
+
+                    let LoginIcon = 
+                    <Pressable 
+                    onPress={() => navigation.navigate("LoginStack")
+                    }>
+                        <Ionicons name='person-outline' size={size} color={color}/>
+                    </Pressable>
 
                     if (route.name === 'Home') {
                         return HomeIcon;
@@ -48,7 +56,7 @@ const BottomTabNavigator: React.FC<any> = () =>{
                         return ContactIcon;
                     }
                     if (route.name === 'Login') {
-                        return MoreIcon;
+                        return LoginIcon;
                     }
                 }
             })}
@@ -56,7 +64,7 @@ const BottomTabNavigator: React.FC<any> = () =>{
             <Tab.Screen name="Home" component={HomeStackNavigator}  />
             <Tab.Screen name="Post a Property" component={PropertyStackNavigator}  />
             <Tab.Screen name="Contact" component={HomeScreen}  />
-            <Tab.Screen name="Login" component={HomeScreen}  />
+            <Tab.Screen name="Login" component={LoginStackNavigator}  />
 
         </Tab.Navigator>
     )
