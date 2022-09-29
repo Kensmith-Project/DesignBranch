@@ -4,8 +4,8 @@ import {createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropertyCard from '../Components/PropertyCard';
 import propertyData from '../mockData/propertyData';
-import HomeScreen from '../screens/HomeScreen';
 import BottomTabNavigator from './BottomTabNavigator';
+import LoginStackNavigator from './LoginStack';
 
 
 const Drawer = createDrawerNavigator();
@@ -19,7 +19,11 @@ const MainNavigator: React.FC<any> = () =>{
 
     return(
         <NavigationContainer>
-            <BottomTabNavigator/>
+            <TestStack.Navigator initialRouteName='BottomTabs'>
+                <TestStack.Screen name='BottomTabs' component={BottomTabNavigator} options={{headerShown: false}}></TestStack.Screen>
+                <TestStack.Screen name='LoginStack' component={LoginStackNavigator} options={{headerShown: false}}></TestStack.Screen>
+            </TestStack.Navigator>
+            {/* <BottomTabNavigator/> */}
         </NavigationContainer>
     )
 }

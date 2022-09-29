@@ -14,25 +14,29 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GeneralStackScreenProps from '../props/GeneralStackScreenProps';
 import {COLOR} from '../utils/Tools';
 
-export interface PropertyCategoryProps extends GeneralStackScreenProps {
-  route?: RouteProp<{
-    params:{
+// export interface PropertyCategoryProps extends GeneralStackScreenProps {
+//   route?: RouteProp<{
+//     params:{
 
-    }
-  }>
-}
+//     }
+//   }>
+// }
 
-const PropertyCategory: React.FC<PropertyCategoryProps> = (route, navigation) => {
+const PropertyCategory: React.FC<any> = ({route, navigation}) =>{
 
   function moveToHomeScreen() {
-   
+   navigation.navigate("HomeStack")
   }
+
+  const nextscreen = ()=>{
+    navigation.navigate("ProType")
+}
 
   return (
     <View>
       <View style={styles.topContainer}>
         <Pressable 
-        // onPress={}
+        onPress={moveToHomeScreen}
         >
           <Ionicons
             size={30}
@@ -55,7 +59,7 @@ const PropertyCategory: React.FC<PropertyCategoryProps> = (route, navigation) =>
         </Text>
         <View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Pressable onPress={() => Alert.alert('For Rent button pressed')}>
+            <Pressable onPress={nextscreen}>
               <ImageBackground
                 source={require('../images/forrent.png')}
                 style={{width: 160, height: 160}}>

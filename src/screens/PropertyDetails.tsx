@@ -12,8 +12,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
 import SelectDropdown from 'react-native-select-dropdown';
 
-const PropertyDetailScreen = () => {
+const PropertyDetailScreen: React.FC<any> = ({route, navigation}) => {
   const countries = ['Lagos', 'Rivers', 'Oyo', 'Imo', 'Anambra'];
+
+  function moveToProLocation() {
+    navigation?.navigate("ProLocation")
+  }
+
+  function moveToProSelectLocation() {
+    navigation?.navigate("ProSelectLocation")
+  }
 
   function icon() {
     return (
@@ -27,7 +35,7 @@ const PropertyDetailScreen = () => {
       <View style={styles.topContainer}>
         <Pressable
           style={styles.icon}
-          // onPress={}
+          onPress={moveToProLocation}
         >
           <Ionicons
             size={30}
@@ -82,7 +90,7 @@ const PropertyDetailScreen = () => {
               />
             </View>
 
-            <Pressable style={styles.btn}>
+            <Pressable onPress={moveToProSelectLocation} style={styles.btn}>
               <Text style={styles.btnText}>Next Step</Text>
             </Pressable>
           </View>
