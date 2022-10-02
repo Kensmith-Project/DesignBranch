@@ -10,6 +10,7 @@ import HomeStackNavigator from './HomeStack';
 import { LinearGradient } from 'react-native-svg';
 import PropertyStackNavigator from './PropertyStack';
 import LoginStackNavigator from './LoginStack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
     const Tab = createBottomTabNavigator();

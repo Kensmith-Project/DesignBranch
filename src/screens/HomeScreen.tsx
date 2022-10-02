@@ -25,7 +25,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import FilterModal, {FilterOptions} from '../Components/modals/FilterModal';
 
-const HomeScreen: React.FC<GeneralStackScreenProps> = () => {
+interface Props {
+  navigation:any;
+}
+
+const HomeScreen = (prop:Props)=> {
   // State
   const [selectedLanguage, setSelectedLanguage] = React.useState('Lagos');
   const [value, setValue] = React.useState('Lagos');
@@ -120,7 +124,7 @@ const HomeScreen: React.FC<GeneralStackScreenProps> = () => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Pressable
               style={{marginRight: 22.3}}
-              onPress={() => Alert.alert('Menu button pressed')}>
+              onPress={() => prop.navigation.toggleDrawer()}>
               <Ionicons name="menu-outline" color={'#000000'} size={40} />
             </Pressable>
 
