@@ -4,8 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLOR} from '../utils/Tools';
 
 const LoginScreen: React.FC<any> = ({route, navigation}) => {
-  function backtoHome(): any {
-    navigation.navigate('LoginStack');
+  function toLoginScreenMain(): any {
+    navigation.navigate('LoginScreenMain');
   }
   return (
     <View style={styles.mainContainer}>
@@ -18,7 +18,9 @@ const LoginScreen: React.FC<any> = ({route, navigation}) => {
           style={styles.imageB}>
           <View>
             <View style={styles.iconView}>
-              <Pressable onPress={backtoHome}>
+              <Pressable 
+              // onPress={}
+              >
                 <Ionicons
                   size={40}
                   name="chevron-back-circle-outline"
@@ -34,7 +36,7 @@ const LoginScreen: React.FC<any> = ({route, navigation}) => {
             </View>
           </View>
           <View>
-            <Pressable style={styles.btnOne}>
+            <Pressable style={styles.btnOne} onPress={toLoginScreenMain}>
               <Text style={styles.textOne}>Login</Text>
             </Pressable>
 

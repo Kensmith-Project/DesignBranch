@@ -7,6 +7,7 @@ import propertyData from '../mockData/propertyData';
 import BottomTabNavigator from './BottomTabNavigator';
 import LoginStackNavigator from './LoginStack';
 import DrawerNavigator from './DrawerNavigator';
+import LoginScreen from '../screens/LoginScreen';
 
 
 const Drawer = createDrawerNavigator();
@@ -20,12 +21,7 @@ const MainNavigator: React.FC<any> = () =>{
 
     return(
         <NavigationContainer>
-            <DrawerNavigator/>
-            {/* <TestStack.Navigator initialRouteName='BottomTabs'> */}
-                {/* <TestStack.Screen name='BottomTabs' component={BottomTabNavigator} options={{headerShown: false}}></TestStack.Screen>
-                <TestStack.Screen name='LoginStack' component={LoginStackNavigator} options={{headerShown: false}}></TestStack.Screen>
-            </TestStack.Navigator> */}
-            {/* <BottomTabNavigator/> */}
+            <DrawerNavigator />
         </NavigationContainer>
     )
 }

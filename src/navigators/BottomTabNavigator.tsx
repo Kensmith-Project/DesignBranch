@@ -11,6 +11,9 @@ import { LinearGradient } from 'react-native-svg';
 import PropertyStackNavigator from './PropertyStack';
 import LoginStackNavigator from './LoginStack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import LoginScreen from '../screens/LoginScreen';
+import DrawerNavigator from './DrawerNavigator';
+import LoginScreenMain from '../screens/LoginInScreenMain';
 
 const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
     const Tab = createBottomTabNavigator();
@@ -42,7 +45,7 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
 
                     let LoginIcon = 
                     <Pressable 
-                    onPress={() => navigation.navigate("LoginStack")
+                    onPress={() => navigation.navigate('LoginStack')
                     }>
                         <Ionicons name='person-outline' size={size} color={color}/>
                     </Pressable>
@@ -65,7 +68,7 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
             <Tab.Screen name="Home" component={HomeStackNavigator}  />
             <Tab.Screen name="Post a Property" component={PropertyStackNavigator}  />
             <Tab.Screen name="Contact" component={HomeScreen}  />
-            <Tab.Screen name="Login" component={LoginStackNavigator}  />
+            <Tab.Screen name="Login" component={LoginScreen}  />
 
         </Tab.Navigator>
     )
