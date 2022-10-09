@@ -14,9 +14,9 @@ const HomeStackNavigator: React.FC<any> = () =>{
     const HomeStack = createNativeStackNavigator();
     return(
         <HomeStack.Navigator
-            // screenOptions={({ route })=>({
-            //     headerShown: false
-            // })}
+            screenOptions={({ route })=>({
+                headerShown: false
+            })}
         >
             <HomeStack.Screen name='Main'
              
