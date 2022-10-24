@@ -11,6 +11,7 @@ import {
 import {COLOR} from '../utils/Tools';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
+import { color } from 'react-native-reanimated';
 
 const PropertyImageScreen: React.FC<any> = ({route, navigation}) => {
 
@@ -46,7 +47,7 @@ const PropertyImageScreen: React.FC<any> = ({route, navigation}) => {
             <View style={styles.uploadView}>
               <Pressable style={styles.btnUpload}>
                 <Image source={require('../images/Vectorf.png')} />
-                <Text>Select Photos</Text>
+                <Text style={{color: '#000000'}}>Select Photos</Text>
               </Pressable>
             </View>
             <View>
@@ -147,7 +148,8 @@ const styles = StyleSheet.create({
     lineHeight: 29,
   },
   textT: {
-    paddingLeft: 10
+    paddingLeft: 10,
+    color: '#000000'
   },
   image: {
     marginTop: 5

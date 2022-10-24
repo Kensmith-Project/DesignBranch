@@ -13,7 +13,7 @@ import CustomHomeScreenHeader from '../Components/CustomHomeScreenHeader';
 const HomeStackNavigator: React.FC<any> = () =>{
     const HomeStack = createNativeStackNavigator();
     return(
-        <HomeStack.Navigator
+        <HomeStack.Navigator initialRouteName='Home'
             screenOptions={({ route })=>({
                 headerShown: false
             })}

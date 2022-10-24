@@ -5,7 +5,9 @@ import BottomTabNavigator from './BottomTabNavigator'
 import CustomDrawer from '../Components/CustomDrawer'
 import LoginScreen from '../screens/LoginScreen'
 import LoginScreenMain from '../screens/LoginInScreenMain'
-LoginScreenMain
+import AccountCreated from '../screens/AccountCreated'
+
+// LoginScreenMain
 const Drawer = createDrawerNavigator()
 
 
@@ -20,6 +22,7 @@ const DrawerNavigator = () => {
         <Drawer.Screen name='Dashboard' component={BottomTabNavigator}/>
         <Drawer.Screen name='LoginStack' component={LoginScreen} />
         <Drawer.Screen name='LoginScreenMain' component={LoginScreenMain} />
+        <Drawer.Screen name='success' component={AccountCreated}/>
     </Drawer.Navigator>
   )
 }
