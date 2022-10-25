@@ -234,11 +234,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     marginBottom: 22,
+    color: "#000000"
   },
   textFirstI: {
     fontSize: 18,
     fontWeight: '500',
     marginBottom: 25,
+    color: '#000000'
   },
   viewThird: {
     flexDirection: 'row',

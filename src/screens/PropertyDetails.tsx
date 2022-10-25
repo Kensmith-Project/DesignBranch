@@ -56,6 +56,7 @@ const PropertyDetailScreen: React.FC<any> = ({route, navigation}) => {
               <TextInput
                 style={styles.desTextInput}
                 placeholder="E.g 3000, 2000"
+                placeholderTextColor={'#000000'}
               />
             </View>
 
@@ -64,6 +65,7 @@ const PropertyDetailScreen: React.FC<any> = ({route, navigation}) => {
               <TextInput
                 style={styles.textInput}
                 placeholder="E.g 4, 5"
+                placeholderTextColor={'#000000'}
               />
             </View>
 
@@ -165,6 +167,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     marginBottom: 22,
+    color: '#000000'
   },
 });
 

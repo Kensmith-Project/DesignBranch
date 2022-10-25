@@ -78,7 +78,9 @@ export interface Property{
     id?: number;
     title: string;
     description: string;
+    view: number;
     price: number;
+    likes: number;
     status: PropertyStatus;
     type: PropertyType;
     size: number;

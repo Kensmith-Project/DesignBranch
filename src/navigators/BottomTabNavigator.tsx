@@ -1,19 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../screens/HomeScreen';
 import { Platform, Pressable, StyleSheet, View, Alert } from 'react-native';
 import HomeStackNavigator from './HomeStack';
-import { LinearGradient } from 'react-native-svg';
 import PropertyStackNavigator from './PropertyStack';
-import LoginStackNavigator from './LoginStack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import LoginScreen from '../screens/LoginScreen';
-import DrawerNavigator from './DrawerNavigator';
 import LoginScreenMain from '../screens/LoginInScreenMain';
+import Contact from '../screens/Contact';
+import LoginStackNavigator from './LoginStack';
 
 const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
     const Tab = createBottomTabNavigator();
@@ -23,6 +17,7 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
             screenOptions={({route})=>({
                 headerShown: false,
                 tabBarActiveTintColor: "#198619",
+                tabBarInactiveTintColor: "#575757",
                 tabBarHideOnKeyboard: true,
                 //tabBarShowLabel: false,
                 tabBarLabelStyle:{
@@ -33,28 +28,23 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
                 tabBarStyle:{
                 //    borderBottomLeftRadius: 15,
                 //    borderBottomRightRadius: 15,
-                   backgroundColor: '#F3FFF3'
+                   backgroundColor: '#ffffff'
                 },
                 tabBarIcon: ({ focused, color, size })=>{
 
-                    let HomeIcon = <FontAwesomeIcon name='home' size={size} color={color}/>;
-                    let PropertyIcon = <Ionicons name='business-outline' size={size} color={color}/>;
+                    let HomeIcon = <Ionicons name='home-outline' size={20} color={color}/>;
+                    let WalletIcon = <Ionicons name='wallet-outline' size={20} color={color}/>;
                     
-                    let ContactIcon = <Ionicons name='call-outline' size={size} color={color}/>
+                    let ContactIcon = <Ionicons name='call-outline' size={20} color={color}/>
                     // let LoginIcon = <Ionicons name='person-outline' size={size} color={color}/>
 
-                    let LoginIcon = 
-                    <Pressable 
-                    onPress={() => navigation.navigate('LoginStack')
-                    }>
-                        <Ionicons name='person-outline' size={size} color={color}/>
-                    </Pressable>
+                    let LoginIcon = <Ionicons name='person-outline' size={size} color={color}/>
 
                     if (route.name === 'Home') {
                         return HomeIcon;
                     }
-                    if (route.name === 'Post a Property') {
-                        return PropertyIcon;
+                    if (route.name === 'Wallet') {
+                        return WalletIcon;
                     }
                     if (route.name === 'Contact') {
                         return ContactIcon;
@@ -66,9 +56,9 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
             })}
         >
             <Tab.Screen name="Home" component={HomeStackNavigator}  />
-            <Tab.Screen name="Post a Property" component={PropertyStackNavigator}  />
-            <Tab.Screen name="Contact" component={HomeScreen}  />
-            <Tab.Screen name="Login" component={LoginScreen}  />
+            <Tab.Screen name="Wallet" component={PropertyStackNavigator}  />
+            <Tab.Screen name="Contact" component={Contact} />
+            <Tab.Screen name="Login" component={LoginStackNavigator}  />
 
         </Tab.Navigator>
     )

@@ -3,5 +3,6 @@ export const COLOR = {
     buttonPrimary: "#003500",
     baseColorPrimary: "#ffffff",
     baseColorTetiary: "#3A3A3A",
-    baseTextColor: "#198619"
+    baseTextColor: "#198619",
+    baseFont: "#575757"
 }
