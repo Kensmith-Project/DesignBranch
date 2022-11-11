@@ -1,13 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import HomeScreen from '../screens/HomeScreen';
 import { Platform, Pressable, StyleSheet, View, Alert } from 'react-native';
 import HomeStackNavigator from './HomeStack';
-import PropertyStackNavigator from './PropertyStack';
-import LoginScreenMain from '../screens/LoginInScreenMain';
 import Contact from '../screens/Contact';
 import LoginStackNavigator from './LoginStack';
+import WalletStackNavigator from './WalletStack';
 
 const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
     const Tab = createBottomTabNavigator();
@@ -56,7 +54,7 @@ const BottomTabNavigator: React.FC<any> = ({route, navigation}) =>{
             })}
         >
             <Tab.Screen name="Home" component={HomeStackNavigator}  />
-            <Tab.Screen name="Wallet" component={PropertyStackNavigator}  />
+            <Tab.Screen name="Wallet" component={WalletStackNavigator}  />
             <Tab.Screen name="Contact" component={Contact} />
             <Tab.Screen name="Login" component={LoginStackNavigator}  />
 
