@@ -14,6 +14,7 @@ import CustomDrawer from '../Components/CustomDrawer'
 import BottomTabNavigation from '../navigators/BottomTabNavigator'
 import HomeScreen from '../screens/HomeScreen'
 import HomeStack from './HomeStack'
+import SaveForRentStacks from '../screens/drawableScreens/SaveForRentStacks'
 
 
 const DrawableStack = () => {
@@ -28,6 +29,9 @@ const DrawableStack = () => {
       })}
     >
     <Drawable.Screen name="Home" component={Profile}   options={{
+              headerShown: false
+            }}/>
+             <Drawable.Screen name="SaveForRentScreen" component={SaveForRentStacks}   options={{
               headerShown: false
             }}/>
     

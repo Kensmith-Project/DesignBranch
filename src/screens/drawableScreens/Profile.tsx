@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <SafeAreaView>
        <View style={{display:'flex', justifyContent:'center'}}>
-    <Text>Last Third</Text>
+    <Text>In the event of history</Text>
    </View>
     </SafeAreaView>
   
