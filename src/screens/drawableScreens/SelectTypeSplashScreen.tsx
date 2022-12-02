@@ -17,7 +17,8 @@ interface Props {
 
 const SelectTypeSplashScreen = (props: Props) => {
   const [selectedId, setSelectedId] = useState(null);
-  const navigateToNamePage =() => props.navigation.navigate("NameDetailsPage")
+  
+  
 
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
@@ -61,7 +62,8 @@ const styles = StyleSheet.create({
   main:{
      paddingHorizontal: 20,
     height:'100%',
-    paddingTop: StatusBar.currentHeight
+    paddingTop: StatusBar.currentHeight,
+    
     
       },
       content:{
@@ -87,6 +89,7 @@ const styles = StyleSheet.create({
       width:'100%',
       height:'13%',
       marginTop:footerMargin
-    }
+    },
+    
   
 })
